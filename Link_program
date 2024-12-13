@@ -1,0 +1,440 @@
+1) write a program for creation of matrix and perform operation in r 
+thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, 
+ncol = 2)
+thismatrix
+#Access the matrix
+thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2,
+ ncol = 2)
+thismatrix[1, 2]
+#Add rows and columns
+thismatrix <- matrix(c("apple", "banana", "cherry", "orange","grape", "pineapple", "pear", "melon", "fig"), nrow = 3, ncol = 3)
+newmatrix <- cbind(thismatrix, c("strawberry", "blueberry", "raspberry"))
+newmatrix
+thismatrix <- matrix(c("apple", "banana", "cherry", "orange", "mango", "pineapple"), nrow = 3, ncol =2)
+#Remove the first row and the first column
+thismatrix <- thismatrix[-c(1), -c(1)]
+thismatrix
+#check if an matrix is exist items
+thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, 
+ncol = 2)
+"apple" %in% thismatrix
+#matrix legth
+thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, 
+ncol = 2)    
+length(thismatrix)
+-----------------------------------------------------------------------------
+2) write a program to demonstrate exporting operator data in r programming.
+# Step 1: Create Operator Data
+operator_data <- data.frame(
+  OperatorID = c(101, 102, 103, 104),
+  Name = c("John Doe", "Jane Smith", "Carlos Ruiz", "Lisa Wong"),
+  Shift = c("Morning", "Evening", "Morning", "Night"),
+  Performance = c(89, 92, 78, 85) )
+# Display the dataset
+print("Operator Data:")
+print(operator_data)
+# Step 2: Export the Operator Data to a CSV file
+file_name <- "operator_data.csv"
+write.csv(operator_data, file = file_name, row.names = FALSE)
+cat("Data has been exported successfully to", file_name, "\n")
+--------------------------------------------------------------------------------------
+ 
+3) Write a program to implement the t_test analysis techniques using R programming.
+# Step 1: Set up sample data
+group1 <- c(23, 25, 27, 30, 22, 26, 28, 24, 27, 29) 
+group2 <- c(18, 21, 20, 23, 19, 22, 24, 20, 21, 22) 
+# Paired data for paired t-test (before and after treatment, for example)
+before_treatment <- c(55, 60, 49, 52, 57, 50, 54, 61, 53, 59)
+after_treatment <- c(58, 63, 51, 55, 60, 54, 56, 64, 57, 61)
+single_group <- c(15, 18, 16, 14, 19, 17, 20, 16, 15, 18)
+population_mean <- 17
+# Step 2: Perform t-test analysis (a) One-sample t-test 
+one_sample_test <- t.test(single_group, mu = population_mean)
+ (b) Two-sample t-test ---- two_sample_test <- t.test(group1, group2)
+# (c) Paired t-test 
+paired_test <- t.test(before_treatment, after_treatment, paired = TRUE)
+# Step 3: Print the results
+cat("One-sample t-test Results:\n")
+print(one_sample_test)
+cat("\nTwo-sample t-test Results:\n")
+print(two_sample_test)
+cat("\nPaired t-test Results:\n")
+print(paired_test)
+ 
+----------------------------------------------------------------------------------------
+4)Write a program to implement the Chi-Square test analysis techniques using R programming.
+# Step 1: Set up observed and expected frequencies
+observed <- c(50, 30, 20)    ----  expected <- c(40, 40, 20
+# Step 2: Perform Chi-Square Goodness-of-Fit Test
+goodness_of_fit_test <- chisq.test(x = observed, p = expected/sum(expected))
+# Step 3: Print the results
+cat("Chi-Square Goodness-of-Fit Test Results:\n")
+print(goodness_of_fit_test)
+# Step 1: Create a contingency table
+contingency_table <- matrix(c(20, 25, 15, 30, 10, 5), nrow = 2, byrow = TRUE)
+# Add row and column names for clarity
+rownames(contingency_table) <- c("Male", "Female")
+colnames(contingency_table) <- c("Product A", "Product B", "Product C")
+# Step 2: Perform Chi-Square Test of Independence
+independence_test <- chisq.test(contingency_table)
+# Step 3: Print the results
+cat("\nChi-Square Test of Independence Results:\n")--print(independence_test)
+------------------------------------------------------------------------------------------------
+5) Write a program for exporting data manipulation(Sorting, Merging, Joining, Summarizing.
+#Data Manipulation
+library(dplyr)
+stats <- data.frame(player=c('A', 'B', 'C', 'D'),
+                    runs=c(100, 200, 408, 19),
+                    wickets=c(17, 20, NA, 5))
+filter(stats, runs>100)
+#Data Summarize
+library(dplyr)
+stats <- data.frame(player=c('A', 'B', 'C', 'D'),
+                    runs=c(100, 200, 408, 19),
+                    wickets=c(17, 20, 7, 5))
+summarize(stats, sum(runs), mean(runs))+0
+#Data Merging
+df1 <- data.frame(row1 = c("a", "b", "c"), row2 = c("d", "e", "f"))
+df2 <- data.frame(col1 = c("a", "b", "c"), col2 = c("Hello", "Geeks", "gfg"))
+df <- merge(df1, df2, by.x ="row1", by.y ="col1") 
+print(df)
+#Data Joining
+df1 = data.frame(StudentId = c(101:106),
+  Product = c("Hindi","English" ,"Maths","Science","Political Science","Physics"))
+df1
+df2 = data.frame(StudentId = c(102, 104, 106, 107, 108),
+                 State = c("Mangalore", "Mysore", "Pune", "Dehradun", "Delhi"))
+df2
+df = merge(x = df1, y = df2, by = "StudentId") 
+df
+df = merge(x = df1, y = df2, by = "StudentId", all.y = TRUE)
+df
+df = merge(x = df1, y = df2, by = NULL) 
+df
+--------------------------------------------------------------------------------------------------------------------
+ 
+6) Write the program for creating R object – vector, array, matrix, data frame and list.
+# vectors. 
+v1 <- c(3,8,4,5,0,11) 
+v2 <- c(4,11,0,8,1,2) 
+add.result <- v1+v2 
+print(add.result) 
+sub.result <- v1-v2
+print(sub.result)
+multi.result <-v1*v2
+print(multi.result)
+divi.result <-v1/v2
+print(divi.result)
+sort.result <- sort(v1) 
+print(sort.result) 
+revsort.result <- sort(v1, decreasing = TRUE)
+print(revsort.result)
+# Create two 2x3 matrices. 
+matrix1 <- matrix(c(3, 9, -1, 4, 2, 6), nrow = 2) 
+print(matrix1) 
+matrix2 <- matrix(c(5, 2, 0, 9, 3, 4), nrow = 2) 
+print(matrix2) 
+result <- matrix1 + matrix2 
+cat("Result of addition","\n") 
+print(result) 
+result <- matrix1 - matrix2 
+cat("Result of subtraction","\n") 
+print(result) 
+result <- matrix1 * matrix2 
+cat("Result of multiplication","\n") 
+print(result) 
+result <- matrix1 / matrix2 
+cat("Result of division","\n") 
+print(result)
+# Create two vectors of different lengths. 
+vector1 <- c(5,9,3) 
+vector2 <- c(10,11,12,13,14,15) 
+result <- array(c(vector1,vector2),dim = c(3,3,2)) 
+print(result) 
+vector1 <- c(5,9,3) 
+vector2 <- c(10,11,12,13,14,15) 
+array1 <- array(c(vector1,vector2),dim = c(3,3,2)) 
+vector3 <- c(9,1,0) 
+vector4 <- c(6,0,11,3,14,1,2,6,9) 
+array2 <- array(c(vector1,vector2),dim = c(3,3,2)) 
+matrix1 <- array1[,,2] 
+matrix2 <- array2[,,2] 
+result <- matrix1+matrix2 
+print(result) 
+# Create two vectors of different lengths. 
+vector1 <- c(5,9,3) 
+vector2 <- c(10,11,12,13,14,15) 
+new.array <- array(c(vector1,vector2),dim = c(3,3,2)) 
+print(new.array) 
+result <- apply(new.array, c(1), sum) 
+print(result)  
+  # Create the data frame. 
+  emp.data <- data.frame( emp_id = c (1:5),  
+    emp_name = c("Rick","Dan","Michelle","Ryan","Gary"), 
+    salary = c(623.3,515.2,611.0,729.0,843.25),  
+    start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11", "2015-03-27")),  stringsAsFactors = FALSE ) 
+print(summary(emp.data)) 
+list1 <- list(1,2,3) 
+list2 <- list("Sun","Mon","Tue") 
+merged.list <- c(list1,list2) 
+print(merged.list)
+ 
+------------------------------------------------------------------------------------------------------------------------------
+7) Write program for creation of atomic vectors in R and elements on basis of indexing.
+numeric_vector <- c(10.5, 20.3, 30.7)  
+character_vector <- c("apple", "banana", "cherry")  
+logical_vector <- c(TRUE, FALSE, TRUE)  
+integer_vector <- c(1L, 2L, 3L)
+cat("Numeric Vector:", numeric_vector, "\n")
+cat("Character Vector:", character_vector, "\n")
+cat("Logical Vector:", logical_vector, "\n")
+cat("Integer Vector:", integer_vector, "\n")
+# Access elements using indexing
+cat("\nAccessing elements using indexing:\n")
+cat("Second element of numeric vector:", numeric_vector[2], "\n")
+cat("First element of character vector:", character_vector[1], "\n")
+cat("Third element of logical vector:", logical_vector[3], "\n")
+cat("First and second elements of integer vector:", integer_vector[c(1, 2)], "\n")
+cat("Excluding the first element of numeric vector:", numeric_vector[-1], "\n")
+cat("Elements of logical vector that are TRUE:", logical_vector[logical_vector], "\n")
+9) Write a program in R to convert the vector in to list and print the elements.
+my_vector <- c(10, 20, 30, 40, 50)
+my_list <- as.list(my_vector)
+cat("The converted list:\n")
+print(my_list)
+cat("\nElements of the list:\n")
+for (i in seq_along(my_list)) {
+  cat(paste("Element", i, ":", my_list[[i]]), "\n")    }
+ 
+---------------------------------------------------------------------------------------------------------------------------
+11) Write a program for creation and manipulation of Data Frame using R Programming.
+emp.data <- data.frame(
+  emp_id = c (1:5), 
+  emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+  salary = c(623.3,515.2,611.0,729.0,843.25), 
+  start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11", "2015-03-27")), stringsAsFactors = FALSE )		
+print(emp.data) 
+#DataFrame Manipulation
+df<-data.frame(row1 = 0:2, row2 = 3:5, row3 = 6:8) 
+print("Original Data Frame") 
+print(df) 
+print("Modified Data Frame") 
+# Renaming Data Frame 
+names(df)[2]<-"two"
+print(df)
+ 
+-------------------------------------------------------------------------------------------------------------------------
+12) Write a program to implement the regression analysis technique using R programming.
+IQ <- rnorm(40, 30, 2)
+IQ <- sort(IQ)
+result <- c(0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 1, 1, 0, 0, 1, 0,
+            0, 0, 1, 0, 0, 1, 1, 0, 1, 1,
+            1, 1, 1, 0, 1, 1, 1, 1, 0, 1)
+df <- as.data.frame(cbind(IQ, result))
+print(df)
+plot(IQ, result, xlab = "IQ Level", ylab = "Probability of Passing")
+g = glm(result~IQ, family=binomial, df)
+curve(predict(g, data.frame(IQ=x), type="resp"), add=TRUE)
+points(IQ, fitted(g), pch=30)
+summary(g)
+ 
+---------------------------------------------------------------------------------------------------------------------
+13) Write a program for creation of vectors and perform operation on vectors in R.
+v1 <- c(3,8,4,5,0,11) 
+v2 <- c(4,11,0,8,1,2) 
+ add.result <- v1+v2 
+print(add.result) 
+sub.result <- v1-v2 
+print(sub.result) 
+multi.result <- v1*v2
+ print(multi.result) 
+ divi.result <- v1/v2 
+print(divi.result) 
+sort.result <- sort(v1) 
+print(sort.result)
+ revsort.result <- sort(v1, decreasing = TRUE) 
+print(revsort.result)
+ 
+-------------------------------------------------------------------------------------------------------------
+14)Write a create a list and giving the name of list elements.
+my_list <- list( c(10, 20, 30),   c("Alice", "Bob"),  TRUE)
+names(my_list) <- c("Numbers", "Names", "Is_Active")
+cat("The named list:\n")
+print(my_list)
+cat("\nAccessing list elements by name:\n")
+cat("Numbers element:\n")
+print(my_list$Numbers)
+cat("Names element:\n")
+print(my_list$Names)
+cat("Is_Active element:\n")
+print(my_list$Is_Active)
+ 
+ 
+------------------------------------------------------------------------------------------------------
+15) Write a program to implement different loops in R Programming .
+# FOR Loop
+cat("FOR Loop Example:\n")
+for (i in 1:5) {
+  cat("Iteration", i, "\n")
+}
+# WHILE Loop
+cat("\nWHILE Loop Example:\n")
+counter <- 1
+while (counter <= 5) {
+  cat("Counter is:", counter, "\n")
+  counter <- counter + 1
+}
+# REPEAT Loop
+cat("\nREPEAT Loop Example:\n")
+counter <- 1
+repeat {
+  cat("Counter is:", counter, "\n")
+  counter <- counter + 1
+  if (counter > 5) {
+    break  
+  }
+}
+ 
+----------------------------------------------------------------------------------------------------
+16) Write a program for validating the data in R Programming. 
+data <- data.frame  
+ID = c(101, 102, NA, 104),           
+  Name = c("Alice", "Bob", "Charlie", ""),  
+  Age = c(25, -5, 30, 40),             
+  Score = c(90, 85, NA, 70) )
+cat("Original Data:\n")
+print(data)
+# 1. Check for missing values
+cat("\nChecking for missing values:\n")
+missing_values <- is.na(data)
+print(missing_values)
+# Count missing values per column
+cat("\nCount of missing values per column:\n")
+print(colSums(is.na(data)))
+# 2. Validate data types
+cat("\nValidating data types:\n")
+cat("Are all 'Age' values numeric?\n")
+print(all(sapply(data$Age, is.numeric)))
+# 3. Check for empty strings
+cat("\nChecking for empty strings in 'Name' column:\n")
+empty_names <- which(data$Name == "")
+print(empty_names)
+# 4. Validate range for Age (e.g., Age should be positive and below 120)
+cat("\nValidating 'Age' column (positive and below 120):\n")
+invalid_age <- which(data$Age <= 0 | data$Age > 120)
+print(invalid_age)
+ 
+-------------------------------------------------------------------------------------
+17)Write a program to Implement basic mathematical operation in R programming.
+a <- 15
+b <- 5
+cat("Addition (a + b):", a + b, "\n")
+cat("Subtraction (a - b):", a - b, "\n")
+cat("Multiplication (a * b):", a * b, "\n")
+cat("Division (a / b):", a / b, "\n")
+cat("Modulus (a %% b):", a %% b, "\n")
+cat("Exponentiation (a ^ b):", a ^ b, "\n")
+cat("Integer Division (a %/% b):", a %/% b, "\n")
+cat("\nPerforming operations on vectors:\n")
+vec1 <- c(1, 2, 3, 4, 5)
+vec2 <- c(5, 4, 3, 2, 1)
+cat("Vector addition (vec1 + vec2):", vec1 + vec2, "\n")
+cat("Vector subtraction (vec1 - vec2):", vec1 - vec2, "\n")
+cat("Vector multiplication (vec1 * vec2):", vec1 * vec2, "\n")
+cat("Vector division (vec1 / vec2):", vec1 / vec2, "\n")
+ 
+---------------------------------------------------------------------------------------------------
+18) Write a program in R for creation of vector by using colon operator and sequence function. 
+# 1. Vector creation using colon operator
+cat("Vector created using colon operator:\n")
+vec1 <- 1:10  
+print(vec1)
+vec2 <- 10:1  
+print(vec2)
+vec3 <- -5:5  
+print(vec3)
+# 2. Vector creation using seq() function
+cat("\nVector created using seq() function:\n")
+vec4 <- seq(1, 10, by = 2)  
+print(vec4)
+vec5 <- seq(0, 1, by = 0.1)  
+print(vec5)
+vec6 <- seq(5, 50, length.out = 10)  
+print(vec6)
+cat("\nVector created using seq_along() function:\n")
+vec7 <- seq_along(vec4)  
+print(vec7)
+ 
+------------------------------------------------------------------------------------------------
+19) Write a program for creation of list and perform operation on list in R programming.
+Geek_list <- list(c("Geeks", "For", "Geeks"), matrix(c(1:9), nrow = 3), 
+						list("Geek", 12.3)) 
+# Naming each element of the list 
+names(Geek_list) <- c("This_is_a_vector", "This_is_a_Matrix", 
+					"This_is_a_listwithin_the_list") 
+print(Geek_list) 
+# To access the first element of the list.       
+print(Geek_list[1]) 
+#  To access the third element.       
+print(Geek_list[3]) 
+# To access the list element using the name of the element.       
+print(Geek_list$This_is_a_Matrix) 
+#  To add a new element. 
+Geek_list[4] <- "New element"
+print(Geek_list) 
+# To remove the last element.      
+Geek_list[4] <- NULL
+# To print the 4th Element.      
+print(Geek_list[4]) 
+# To update the 3rd Element.      
+Geek_list[3] <- "updated element"
+print(Geek_list[3])
+ 
+-------------------------------------------------------------------------------------------------------------
+ 20) Write a program to implement different loops and vectorization of missing values in R Programming.
+vec <- c(10, NA, 15, NA, 20, 25, NA)
+mean_value <- mean(vec, na.rm = TRUE)
+# Vectorized approach to handle missing values
+vec[is.na(vec)] <- mean_value
+cat("Updated Vector with Vectorization:\n", vec, "\n")
+# FOR loop to handle missing values
+for (i in 1:length(vec)) if (is.na(vec[i])) vec[i] <- mean_value
+cat("Updated Vector after FOR Loop:\n", vec, "\n")
+# WHILE loop to handle missing values
+i <- 1
+while (i <= length(vec)) {
+  if (is.na(vec[i])) 
+    vec[i] <- mean_value;
+  i <- i + 1 }
+cat("Updated Vector after WHILE Loop:\n", vec, "\n")
+# REPEAT loop to handle missing values
+i <- 1
+repeat { 
+  if (i > length(vec)) 
+    break; 
+  if (is.na(vec[i])) 
+    vec[i] <- mean_value; 
+  i <- i + 1 }
+cat("Updated Vector after REPEAT Loop:\n", vec, "\n")
+vec <- c(10, NA, 15, NA, 20, 25, NA)
+vec <- ifelse(is.na(vec), mean_value, vec)
+cat("Updated Vector after Vectorization with ifelse:\n", vec, "\n")
+ 
+-----------------------------------------------------------------------------------------------------
+21)write a program for creation of array and perform the operation in R.
+vector1 <- c(5,9,3) 
+vector2 <- c(10,11,12,13,14,15) 
+result <- array(c(vector1,vector2),dim = c(3,3,2))
+ print(result)
+vector1 <- c(5,9,3) 
+vector2 <- c(10,11,12,13,14,15) 
+ array1 <- array(c(vector1,vector2),dim = c(3,3,2)) 
+vector3 <- c(9,1,0)
+ vector4 <- c(6,0,11,3,14,1,2,6,9) 
+array2 <- array(c(vector1,vector2),dim = c(3,3,2))
+ matrix1 <- array1[,,2] 
+matrix2 <- array2[,,2] 
+result <- matrix1+matrix2 print(result)
+ 
+ 

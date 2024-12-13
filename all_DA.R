@@ -108,7 +108,7 @@ list2 <- list("Sun","Mon","Tue")
 merged.list <- c(list1,list2)
 print(merged.list)
 
-
+#importing of data in R programming
 data <- read.csv("C:/Users/visha/Desktop/ml/1csv.csv")
 print(data)
 

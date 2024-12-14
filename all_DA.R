@@ -187,3 +187,61 @@ df_merged <- merge(df, df2, by = "Name")
 #left_join
 library(dplyr)
 df_joined <- left_join(df, df2, by = "Name")
+
+# Basic Mathematical Operations Program
+
+addition <- function(a, b) {
+  return(a + b)
+}
+
+subtraction <- function(a, b) {
+  return(a - b)
+}
+
+multiplication <- function(a, b) {
+  return(a * b)
+}
+
+division <- function(a, b) {
+  if (b != 0) {
+    return(a / b)
+  } else {
+    return("Error: Division by zero is not allowed")
+  }
+}
+
+exponentiation <- function(a, b) {
+  return(a^b)
+}
+
+modulus <- function(a, b) {
+  return(a %% b)
+}
+
+cat("Basic Mathematical Operations in R\n")
+cat("Choose an operation:\n")
+cat("1. Addition\n")
+cat("2. Subtraction\n")
+cat("3. Multiplication\n")
+cat("4. Division\n")
+cat("5. Exponentiation\n")
+cat("6. Modulus\n")
+
+operation <- as.integer(readline(prompt = "Enter the operation number (1-6): "))
+
+num1 <- as.numeric(readline(prompt = "Enter the first number: "))
+num2 <- as.numeric(readline(prompt = "Enter the second number: "))
+
+result <- NULL
+switch(operation,
+       "1" = {result <- addition(num1, num2)},
+       "2" = {result <- subtraction(num1, num2)},
+       "3" = {result <- multiplication(num1, num2)},
+       "4" = {result <- division(num1, num2)},
+       "5" = {result <- exponentiation(num1, num2)},
+       "6" = {result <- modulus(num1, num2)},
+       {
+         cat("Invalid operation\n")
+       })
+
+cat("Result: ", result, "\n")

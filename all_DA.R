@@ -123,3 +123,67 @@ retval <- subset(data, as.Date(start_date) > as.Date("2014-01- 01"))
 write.csv(retval,"output.csv") 
 newdata <- read.csv("output.csv") 
 print(newdata)
+
+#loop 
+I<-1
+While(i<=10){
+ If(i==5){
+  I<-i+1
+  Next
+ }
+Print(i)
+I<-i+1
+}
+
+for (i in 1: 4)
+{
+ print(i ^ 2)
+}
+
+# R program to illustrate while loop 
+result <- c("Hello World")
+i <- 1
+# test expression 
+while (i < 6) {
+ print(result)
+ # update expression 
+ i = i + 1
+}
+# whose factorial will be calculated 
+n < - 5
+# assigning the factorial variable 
+# and iteration variable to 1 
+factorial < - 1
+i < - 1
+# using while loop 
+while (i <= n)
+{
+factorial = factorial * i
+ i = i + 1
+}
+# displaying the factorial 
+print(factorial)
+
+#Vectorization
+v <- c(1, 2, 3, 4, 5)
+v <- v * 2
+
+#Missing Values
+#is.na function using check the NA missing value 
+#na.omit function using remove the NA missing value 
+print(is.na(v))
+v <- na.omit(v)
+v<-c(1,2,3,NA,5)
+
+#Data Manipulations
+#Summary
+summary(df)
+#Sorting
+df_sorted <- df[order(df$Age), ]
+#Subsetting
+df_subset <- subset(df, Age > 30)
+#Merging and Joining
+df_merged <- merge(df, df2, by = "Name")
+#left_join
+library(dplyr)
+df_joined <- left_join(df, df2, by = "Name")

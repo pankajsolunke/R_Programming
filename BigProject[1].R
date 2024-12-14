@@ -75,6 +75,22 @@ if(length(rules)>0){
   cat("No rules generated...! try adjusting support and confidence values.\n")
 }
 
+# Statistical Hypothesis Testing Program
+group_a <- c(78, 82, 85, 90, 94, 86, 88)
+group_b <- c(92, 88, 84, 91, 95, 89, 92)
+
+t_test_result <- t.test(group_a, group_b, var.equal = TRUE)
+
+print("Results of t-test:")
+print(t_test_result)
+
+if (t_test_result$p.value < 0.05) {
+  print("Reject the null hypothesis:      There is a significant difference between    the two groups.")
+} 
+else {
+  print("Fail to reject the null  hypothesis: There is no significant difference between the two groups.")
+}
+
 
 
 
